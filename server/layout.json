@@ -1,0 +1,107 @@
+{
+ "time_scale": 60,
+ "opcua": {
+  "endpoint": "opc.tcp://localhost:4840",
+  "node_template": "ns=2;s={id}.{tag}"
+ },
+ "mqtt": {
+  "host": "localhost",
+  "port": 1883,
+  "topic": "factory/+/telemetry"
+ },
+ "line": [
+  "cnc_milling_05",
+  "stamp_press_04",
+  "laser_grind_07",
+  "weld_robot_01",
+  "paint_spray_02",
+  "assembly_line_03",
+  "quality_scan_06"
+ ],
+ "devices": [
+  {
+   "id": "cnc_milling_05",
+   "name": "ЧПУ станок",
+   "shop": "Механический цех",
+   "x": 20,
+   "y": 30,
+   "plan_per_hour": 480,
+   "t_warn": 70,
+   "t_crit": 85,
+   "v_warn": 0.08,
+   "v_crit": 0.12
+  },
+  {
+   "id": "stamp_press_04",
+   "name": "Штамповочный пресс",
+   "shop": "Цех штамповки",
+   "x": 270,
+   "y": 30,
+   "plan_per_hour": 600,
+   "t_warn": 70,
+   "t_crit": 85,
+   "v_warn": 0.08,
+   "v_crit": 0.12
+  },
+  {
+   "id": "laser_grind_07",
+   "name": "Лазерная шлифовка",
+   "shop": "Цех лазерной обработки",
+   "x": 395,
+   "y": 30,
+   "plan_per_hour": 480,
+   "t_warn": 70,
+   "t_crit": 85,
+   "v_warn": 0.08,
+   "v_crit": 0.12
+  },
+  {
+   "id": "weld_robot_01",
+   "name": "Робот-сварщик",
+   "shop": "Цех сварки",
+   "x": 520,
+   "y": 30,
+   "plan_per_hour": 420,
+   "t_warn": 70,
+   "t_crit": 85,
+   "v_warn": 0.08,
+   "v_crit": 0.12
+  },
+  {
+   "id": "paint_spray_02",
+   "name": "Камера покраски",
+   "shop": "Цех окраски",
+   "x": 20,
+   "y": 150,
+   "plan_per_hour": 360,
+   "t_warn": 70,
+   "t_crit": 85,
+   "v_warn": 0.08,
+   "v_crit": 0.12
+  },
+  {
+   "id": "assembly_line_03",
+   "name": "Сборочный конвейер",
+   "shop": "Сборочный цех",
+   "x": 270,
+   "y": 150,
+   "plan_per_hour": 360,
+   "t_warn": 70,
+   "t_crit": 85,
+   "v_warn": 0.08,
+   "v_crit": 0.12
+  },
+  {
+   "id": "quality_scan_06",
+   "name": "Контроль качества",
+   "shop": "Линия контроля",
+   "x": 520,
+   "y": 150,
+   "plan_per_hour": 360,
+   "t_warn": 70,
+   "t_crit": 85,
+   "v_warn": 0.08,
+   "v_crit": 0.12
+  }
+ ]
+}

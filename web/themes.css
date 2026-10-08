@@ -1,0 +1,28 @@
+﻿/* Allur: палитры. Подключается после основного <style>, переопределяет переменные цвета.
+   Тёмная тема смягчена; добавлены 4 темы: amber, emerald, violet, cyan. */
+
+:root[data-theme=dark]{--bg:#0F1318;--p:#151A21;--p2:#1C222B;--ink:#E7EBF0;--mut:#8D99A8;--ln:#262E39;--ac:#4CCB9B;--ac2:#78A2F2;--acs:rgba(76,203,155,.13);--on:#06140E;--warn:#EDB95A;--crit:#F27D72;--s1:#243142;--s2:#0D1116;--ov:rgba(21,26,33,.72)}
+:root[data-theme=light]{--bg:#EEF1F4;--p:#FFFFFF;--p2:#F4F6F9;--ink:#1B2430;--mut:#6B7787;--ln:#DFE4EA;--ac:#0F8F6B;--ac2:#3E63D6;--acs:rgba(15,143,107,.10);--warn:#B9791B;--crit:#D8453A;--s1:#F7F9FB;--s2:#D6DEE6}
+
+
+/* 3D-сцена («на чём стоит завод») всегда тёмная, даже в светлой теме: внутри .stage переменные цвета тёмные.
+   Акценты палитр для сцены задаются в themes.js (там же правила для остальных палитр). */
+:root[data-theme=light] .stage{--bg:#0F1318;--p:#151A21;--p2:#1C222B;--ink:#E7EBF0;--mut:#8D99A8;--ln:#262E39;--s1:#243142;--s2:#0D1116;--ov:rgba(21,26,33,.74);--on:#06140E;--ac:#4CCB9B;--ac2:#78A2F2;--acs:rgba(76,203,155,.15);--warn:#EDB95A;--crit:#F27D72;--sh:none;color:var(--ink)}
+
+/* мягкие акценты вместо кислотных: кнопки, плашки, карточки */
+.btn.pri{box-shadow:0 1px 0 rgba(255,255,255,.12) inset}
+.sb nav button.on{box-shadow:inset 3px 0 0 var(--ac)}
+.kpi::before,.p-mon>.g::before{opacity:.9}
+.stage{background:radial-gradient(120% 95% at 50% 105%,var(--s1),var(--s2))}
+
+/* быстрые палитры в левом меню */
+.sw-pal{display:flex;gap:8px;justify-content:center;padding:2px 0}
+.sw-pal button{width:22px;height:22px;border-radius:50%;border:2px solid var(--ln);cursor:pointer;padding:0;transition:transform .15s,border-color .15s}
+.sw-pal button:hover{transform:scale(1.15)}
+.sw-pal button.on{border-color:var(--ink);box-shadow:0 0 0 2px var(--p),0 0 0 4px var(--ac)}
+.sb .hc{display:flex;flex-direction:column;gap:8px;align-items:stretch;margin:6px 0 4px}
+.sb .hc .btn{justify-content:flex-start;width:100%}
+body[data-tab=dash] main>header{display:none}
+/* панель жюри не выходит за экран: внутри прокрутка */
+#dt{max-height:calc(100vh - 16px)!important;display:flex;flex-direction:column}#dt[hidden]{display:none}#dt .dtb{overflow-y:auto!important;min-height:0}
+body[data-tab=dash] main{padding-top:14px}

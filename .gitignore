@@ -1,0 +1,19 @@
+# секреты: ключи ИИ, токен Telegram, PIN — НЕ публиковать
+.env
+API_KEY.txt
+
+# локальное окружение и кэш
+.venv/
+__pycache__/
+*.pyc
+
+# база данных с историей (создаётся при первом запуске)
+data/allur.db
+data/allur.db-shm
+data/allur.db-wal
+
+# архивы для друзей и временные файлы
+*.zip
+*.log
+.DS_Store
+Thumbs.db
