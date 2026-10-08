@@ -17,3 +17,6 @@ data/allur.db-wal
 *.log
 .DS_Store
 Thumbs.db
+
+# метка «вопрос про ключ ИИ уже задавали»
+.ai_asked

@@ -54,6 +54,27 @@ if not exist .venv\.deps_ok (
   echo ok> .venv\.deps_ok
 )
 
+rem ---- ключ ИИ: спрашиваем один раз при первом запуске ----
+if exist .ai_asked goto run
+.venv\Scripts\python.exe -c "import sys;from server import config as c;sys.exit(0 if (c.AI_API_KEY or c.AI_PROVIDER=='ollama') else 1)" >nul 2>&1
+if not errorlevel 1 goto aiok
+echo.
+echo ИИ-агент: вставьте ключ, чтобы чат отвечал настоящей моделью ^(Gemini: AIza... , Claude: sk-ant-...^).
+echo Бесплатный ключ Gemini: https://aistudio.google.com/apikey
+echo Без ключа всё работает, чат отвечает в простом режиме. Ключ можно добавить позже: файл API_KEY.txt или Настройки.
+set "KEY="
+set /p "KEY=Ключ (Enter - пропустить): "
+echo asked> .ai_asked
+if not defined KEY goto run
+set "ALLUR_KEY=%KEY%"
+.venv\Scripts\python.exe -c "import os;open('API_KEY.txt','w',encoding='utf-8').write(os.environ['ALLUR_KEY'].strip()+chr(10))"
+set "ALLUR_KEY="
+echo Ключ сохранён в API_KEY.txt ^(в GitHub он не попадает^).
+goto run
+:aiok
+echo ok> .ai_asked
+:run
+
 echo.
 echo Запускаю Allur Digital Twin. Браузер откроется сам. Окно не закрывайте.
 echo Остановить: Ctrl+C
